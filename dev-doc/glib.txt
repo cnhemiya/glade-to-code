@@ -1,0 +1,366 @@
+class  	ArrayHandler
+ 	A utility for converting between std::vector and plain C arrays. More...
+ 
+class  	ArrayHandler< bool >
+ 
+class  	Binding
+ 	Bind two object properties. More...
+ 
+class  	ByteArray
+ 	ByteArray - Arrays of bytes. More...
+ 
+class  	Bytes
+ 	A simple refcounted data type representing an immutable byte sequence from an unspecified origin. More...
+ 
+class  	Checksum
+ 	Computes the checksum for data. More...
+ 
+class  	ConvertError
+ 	Exception class for charset conversion errors. More...
+ 
+class  	Date
+ 	Julian calendar date. More...
+ 
+class  	DateTime
+ 	DateTime - A structure representing Date and Time. More...
+ 
+class  	DBusObjectPathString
+ 	String class for D-Bus object paths in Glib::Variant. More...
+ 
+class  	DBusSignatureString
+ 	String class for D-Bus signatures in Glib::Variant. More...
+ 
+class  	Dir
+ 	Utility class representing an open directory. More...
+ 
+class  	DirIterator
+ 	The iterator type of Glib::Dir. More...
+ 
+class  	Dispatcher
+ 	Signal class for inter-thread communication. More...
+ 
+class  	Error
+ 
+class  	ExtraClassInit
+ 	A convenience class for named custom types. More...
+ 
+class  	FileError
+ 	Exception class for file-related errors. More...
+ 
+class  	IConv
+ 	Thin iconv() wrapper. More...
+ 
+class  	IdleSource
+ 
+class  	Interface
+ 
+class  	IOChannel
+ 	IOChannel aims to provide portable I/O support for files, pipes and sockets, and to integrate them with the GLib main event loop. More...
+ 
+class  	IOChannelError
+ 	Exception class for IOChannel errors. More...
+ 
+class  	IOSource
+ 
+class  	KeyFile
+ 	This class lets you parse, edit or create files containing groups of key-value pairs, which we call key files for lack of a better name. More...
+ 
+class  	KeyFileError
+ 	Exception class for KeyFile errors. More...
+ 
+class  	ListHandler
+ 	A utility for converting between std::vector and GList. More...
+ 
+class  	MainContext
+ 	Main context. More...
+ 
+class  	MainLoop
+ 
+class  	MarkupError
+ 	Exception class for markup parsing errors. More...
+ 
+class  	MatchInfo
+ 	MatchInfo - MatchInfo is used to retrieve information about the regular expression match which created it. More...
+ 
+class  	Module
+ 	Dynamic Loading of Modules These functions provide a portable way to dynamically load object files (commonly known as 'plug-ins'). More...
+ 
+class  	NodeTree
+ 	N-ary Trees - trees of data with any number of branches The NodeTree class and its associated functions provide an N-ary tree data structure, in which nodes in the tree can contain arbitrary data. More...
+ 
+class  	Object
+ 
+class  	ObjectBase
+ 	Glib::ObjectBase is a common base class for Objects and Interfaces. More...
+ 
+class  	OptionContext
+ 	An OptionContext defines and parses commandline options, using OptionGroups and option entries . More...
+ 
+class  	OptionEntry
+ 	An OptionEntry defines a single option. More...
+ 
+class  	OptionError
+ 	Exception class for options. More...
+ 
+class  	OptionGroup
+ 	An OptionGroup defines the options in a single group. More...
+ 
+class  	PatternSpec
+ 
+class  	PollFD
+ 
+class  	Property
+ 	A Glib::Object property. More...
+ 
+class  	Property_ReadOnly
+ 	See Property. More...
+ 
+class  	Property_WriteOnly
+ 	See Property. More...
+ 
+class  	PropertyBase
+ 	This is the base class for Glib::Object properties. More...
+ 
+class  	PropertyProxy
+ 	A PropertyProxy can be used to get and set the value of an object's property. More...
+ 
+class  	PropertyProxy_Base
+ 
+class  	PropertyProxy_ReadOnly
+ 	See PropertyProxy(). More...
+ 
+class  	PropertyProxy_WriteOnly
+ 	See PropertyProxy(). More...
+ 
+class  	Quark
+ 
+class  	QueryQuark
+ 	Quarks are unique IDs in Glib for strings for use in hash table lookups. More...
+ 
+class  	Rand
+ 
+class  	Regex
+ 	Perl-compatible regular expressions - matches strings against regular expressions. More...
+ 
+class  	RegexError
+ 	Exception class for Regex More...
+ 
+class  	ShellError
+ 	Exception class for shell utility errors. More...
+ 
+class  	SignalChildWatch
+ 
+class  	SignalIdle
+ 
+class  	SignalIO
+ 
+class  	SignalProxy< R(T...)>
+ 	Proxy for signals with any number of arguments. More...
+ 
+class  	SignalProxy< void(T...)>
+ 	Proxy for signals with any number of arguments. More...
+ 
+class  	SignalProxyBase
+ 
+class  	SignalProxyDetailed< R(T...)>
+ 	Proxy for signals with any number of arguments and possibly a detailed name. More...
+ 
+class  	SignalProxyDetailed< void(T...)>
+ 	Proxy for signals with any number of arguments and possibly a detailed name. More...
+ 
+class  	SignalProxyDetailedBase
+ 	The SignalProxy provides an API similar to sigc::signal that can be used to connect sigc::slots to glib signals. More...
+ 
+class  	SignalProxyNormal
+ 	The SignalProxy provides an API similar to sigc::signal that can be used to connect sigc::slots to glib signals. More...
+ 
+class  	SignalProxyProperty
+ 	Use the connect() method, with sigc::ptr_fun() or sigc::mem_fun() to connect signals to signal handlers. More...
+ 
+class  	SignalTimeout
+ 
+class  	SListHandler
+ 	A utility for converting between std::vector and GSList. More...
+ 
+class  	Source
+ 
+class  	SpawnError
+ 	Exception class for errors occuring when spawning processes. More...
+ 
+class  	StdStringView
+ 	Helper class to avoid unnecessary string copying in function calls. More...
+ 
+class  	TimeoutSource
+ 
+class  	Timer
+ 	Portable stop watch interface. More...
+ 
+class  	TimeZone
+ 	TimeZone - A structure representing a time zone. More...
+ 
+class  	ustring
+ 	Glib::ustring has much the same interface as std::string, but contains Unicode characters encoded as UTF-8. More...
+ 
+class  	ustring_Iterator
+ 	The iterator type of Glib::ustring. More...
+ 
+class  	UStringView
+ 	Helper class to avoid unnecessary string copying in function calls. More...
+ 
+class  	Value
+ 	Generic value implementation for custom types. More...
+ 
+class  	Value< bool >
+ 
+class  	Value< const T*, Enable >
+ 	Specialization for pointers to const instances of any type. More...
+ 
+class  	Value< double >
+ 
+class  	Value< float >
+ 
+class  	Value< Glib::ustring >
+ 	Specialization for UTF-8 strings. More...
+ 
+class  	Value< int >
+ 
+class  	Value< long >
+ 
+class  	Value< long long >
+ 
+class  	Value< signed char >
+ 
+class  	Value< std::string >
+ 	Specialization for strings. More...
+ 
+class  	Value< std::vector< Glib::ustring > >
+ 	Specialization for vectors of UTF-8 strings. More...
+ 
+class  	Value< std::vector< std::string > >
+ 	Specialization for vectors of strings. More...
+ 
+class  	Value< T*, Enable >
+ 	Specialization for pointers to instances of any type. More...
+ 
+class  	Value< unsigned char >
+ 
+class  	Value< unsigned int >
+ 
+class  	Value< unsigned long >
+ 
+class  	Value< unsigned long long >
+ 
+class  	Value< void* >
+ 
+class  	Value_Boxed
+ 
+class  	Value_Enum
+ 	Base class of Glib::Value<T> specializations for enum types. More...
+ 
+class  	Value_Flags
+ 	Base class of Glib::Value<T> specializations for flags types. More...
+ 
+class  	Value_Pointer
+ 
+class  	Value_RefPtrBoxed
+ 
+class  	ValueBase
+ 
+class  	ValueBase_Boxed
+ 
+class  	ValueBase_Enum
+ 
+class  	ValueBase_Flags
+ 
+class  	ValueBase_Object
+ 
+class  	ValueBase_String
+ 
+class  	ValueBase_Variant
+ 
+class  	Variant
+ 	Template class used for the specialization of the Variant<> classes. More...
+ 
+class  	Variant< bool >
+ 	Specialization of Glib::Variant containing a bool type. More...
+ 
+class  	Variant< double >
+ 	Specialization of Glib::Variant containing a double type. More...
+ 
+class  	Variant< gint16 >
+ 	Specialization of Glib::Variant containing a gint16 type. More...
+ 
+class  	Variant< gint32 >
+ 	Specialization of Glib::Variant containing a gint32 type. More...
+ 
+class  	Variant< gint64 >
+ 	Specialization of Glib::Variant containing a gint64 type. More...
+ 
+class  	Variant< Glib::DBusObjectPathString >
+ 	Specialization of Variant containing a Glib::DBusObjectPathString, for variants of type object path. More...
+ 
+class  	Variant< Glib::DBusSignatureString >
+ 	Specialization of Variant containing a Glib::DBusSignatureString, for variants of type signature. More...
+ 
+class  	Variant< Glib::ustring >
+ 	Specialization of Variant containing a Glib::ustring, for variants of type string, object path, or signature. More...
+ 
+class  	Variant< guint16 >
+ 	Specialization of Glib::Variant containing a guint16 type. More...
+ 
+class  	Variant< guint32 >
+ 	Specialization of Glib::Variant containing a guint32 type. More...
+ 
+class  	Variant< guint64 >
+ 	Specialization of Glib::Variant containing a guint64 type. More...
+ 
+class  	Variant< std::map< K, V > >
+ 	Specialization of Variant containing a dictionary (a map of (key, value) elements). More...
+ 
+class  	Variant< std::string >
+ 	Specialization of Variant containing a std::string, for variants of type bytestring, string, object path, or signature. More...
+ 
+class  	Variant< std::tuple< Types... > >
+ 	Specialization of Variant containing a tuple. More...
+ 
+class  	Variant< std::vector< Glib::DBusObjectPathString > >
+ 	Specialization of Variant containing an array of D-Bus object paths. More...
+ 
+class  	Variant< std::vector< Glib::ustring > >
+ 	Specialization of Variant containing an array of UTF-8 capable strings. More...
+ 
+class  	Variant< std::vector< std::string > >
+ 	Specialization of Variant containing an array of non-UTF-8 strings (byte string arrays). More...
+ 
+class  	Variant< std::vector< T > >
+ 	Specialization of Variant containing an array of items. More...
+ 
+class  	Variant< unsigned char >
+ 	Specialization of Glib::Variant containing a unsigned char type. More...
+ 
+class  	Variant< Variant< T > >
+ 	Specialization of Variant containing a Variant<T>. More...
+ 
+class  	Variant< VariantBase >
+ 	Specialization of Variant containing a VariantBase. More...
+ 
+class  	VariantBase
+ 	This is the base class for all Variant types. More...
+ 
+class  	VariantContainerBase
+ 	The base class for multiple-item Variants, such as Variants containing tuples or arrays, and also for maybe-typed (that is, nullable) Variant types. More...
+ 
+class  	VariantDict
+ 	VariantDict is a mutable interface to Variant dictionaries. More...
+ 
+class  	VariantIter
+ 	VariantIter - An opaque data structure used to iterate through VariantContainerBase containers such as arrays. More...
+ 
+class  	VariantParseError
+ 	Exception class for Variant parse errors. More...
+ 
+class  	VariantStringBase
+ 	Base class from which string variant classes derive. More...
+ 
+class  	VariantType
+ 	VariantType - The VariantBase type system. More...
