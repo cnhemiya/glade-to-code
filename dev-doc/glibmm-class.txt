@@ -1,0 +1,136 @@
+ArrayHandler
+ArrayHandler< bool >
+Binding
+ByteArray
+Bytes
+Checksum
+ConvertError
+DBusObjectPathString
+DBusSignatureString
+Date
+DateTime
+Dir
+DirIterator
+Dispatcher
+Error
+ExtraClassInit
+FileError
+IConv
+IOChannel
+IOChannelError
+IOSource
+IdleSource
+Interface
+KeyFile
+KeyFileError
+ListHandler
+MainContext
+MainLoop
+MarkupError
+MatchInfo
+Module
+NodeTree
+Object
+ObjectBase
+OptionContext
+OptionEntry
+OptionError
+OptionGroup
+PatternSpec
+PollFD
+Property
+PropertyBase
+PropertyProxy
+PropertyProxy_Base
+PropertyProxy_ReadOnly
+PropertyProxy_WriteOnly
+Property_ReadOnly
+Property_WriteOnly
+Quark
+QueryQuark
+Rand
+Regex
+RegexError
+SListHandler
+ShellError
+SignalChildWatch
+SignalIO
+SignalIdle
+SignalProxy< R(T...)>
+SignalProxy< void(T...)>
+SignalProxyBase
+SignalProxyDetailed< R(T...)>
+SignalProxyDetailed< void(T...)>
+SignalProxyDetailedBase
+SignalProxyNormal
+SignalProxyProperty
+SignalTimeout
+Source
+SpawnError
+StdStringView
+TimeZone
+TimeoutSource
+Timer
+UStringView
+Value
+Value< Glib::ustring >
+Value< T*, Enable >
+Value< bool >
+Value< const T*, Enable >
+Value< double >
+Value< float >
+Value< int >
+Value< long >
+Value< long long >
+Value< signed char >
+Value< std::string >
+Value< std::vector< Glib::ustring > >
+Value< std::vector< std::string > >
+Value< unsigned char >
+Value< unsigned int >
+Value< unsigned long >
+Value< unsigned long long >
+Value< void* >
+ValueBase
+ValueBase_Boxed
+ValueBase_Enum
+ValueBase_Flags
+ValueBase_Object
+ValueBase_String
+ValueBase_Variant
+Value_Boxed
+Value_Enum
+Value_Flags
+Value_Pointer
+Value_RefPtrBoxed
+Variant
+Variant< Glib::DBusObjectPathString >
+Variant< Glib::DBusSignatureString >
+Variant< Glib::ustring >
+Variant< Variant< T > >
+Variant< VariantBase >
+Variant< bool >
+Variant< double >
+Variant< gint16 >
+Variant< gint32 >
+Variant< gint64 >
+Variant< guint16 >
+Variant< guint32 >
+Variant< guint64 >
+Variant< std::map< K, V > >
+Variant< std::string >
+Variant< std::tuple< Types... > >
+Variant< std::vector< Glib::DBusObjectPathString > >
+Variant< std::vector< Glib::ustring > >
+Variant< std::vector< T > >
+Variant< std::vector< std::string > >
+Variant< unsigned char >
+VariantBase
+VariantContainerBase
+VariantDict
+VariantIter
+VariantParseError
+VariantStringBase
+VariantType
+ustring
+ustring_Iterator
