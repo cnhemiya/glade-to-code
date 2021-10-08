@@ -1,7 +1,7 @@
 # glade-to-code
 
 #### 介绍
-根据 Glade 文件生成相关的语言代码
+根据 [Glade](https://glade.gnome.org) 文件生成相关的语言代码
 
 #### 软件架构
 软件架构说明
