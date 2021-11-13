@@ -5,11 +5,11 @@ AUTHOR:  cnhemiya@qq.com
 DATE:    2021-10-14 12:59
 """
 
-import gtcmod.core
+import gtcmod.codeobject
 
-MAP_GLADE_IDX = gtcmod.core.MAP_GLADE_IDX
-MAP_CLASS_IDX = gtcmod.core.MAP_CLASS_IDX
-MAP_MOD_IDX = gtcmod.core.MAP_MOD_IDX
+MAP_GLADE_IDX = gtcmod.codeobject.MAP_GLADE_IDX
+MAP_CLASS_IDX = gtcmod.codeobject.MAP_CLASS_IDX
+MAP_MOD_IDX = gtcmod.codeobject.MAP_MOD_IDX
 
 GLADE_MAP_GTK = [
     {MAP_GLADE_IDX: "GFileIcon", MAP_CLASS_IDX: "Gio::FileIcon",
