@@ -14,3 +14,17 @@ def replaceStringByDict(string_, strDict):
     for key in strDict:
         string_ = string_.replace(key, strDict[key])
     return string_
+
+
+class GladeParse:
+    """
+    GladeParse 类，用于解析 glade 文件
+    """
+    def __init__(self):
+        """
+        初始化 GladeParse 类
+        """
+        pass
+
+    def parse(self, glade_txt):
+        pass

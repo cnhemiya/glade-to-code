@@ -5,11 +5,12 @@ AUTHOR:  cnhemiya@qq.com
 DATE:    2021-10-14 12:59
 """
 
-import gtcmod.codeobject
+import gtcmod.codeobject as cdobj
+import gtcmod.core as cr
 
-MAP_GLADE_IDX = gtcmod.codeobject.MAP_GLADE_IDX
-MAP_CLASS_IDX = gtcmod.codeobject.MAP_CLASS_IDX
-MAP_MOD_IDX = gtcmod.codeobject.MAP_MOD_IDX
+MAP_GLADE_IDX = cdobj.MAP_GLADE_IDX
+MAP_CLASS_IDX = cdobj.MAP_CLASS_IDX
+MAP_MOD_IDX = cdobj.MAP_MOD_IDX
 
 GLADE_MAP_GTK = [
     {MAP_GLADE_IDX: "GFileIcon", MAP_CLASS_IDX: "Gio::FileIcon",
@@ -249,3 +250,36 @@ GLADE_MAP_GTK = [
     {MAP_GLADE_IDX: "GtkWindowGroup", MAP_CLASS_IDX: "Gtk::WindowGroup",
         MAP_MOD_IDX: "<gtkmm/windowgroup.h>"}
 ]
+
+
+class ToCpp(cdobj.CodeObject):
+    def __init__(self):
+        super().__init__()
+        self.__parse = cr.GladeParse()
+
+    def read(self, file):
+        try:
+            self._readFile(file)
+            self._parse()
+            return True
+        except Exception as e:
+            print(e)
+            return False
+
+    def wirte(self, file):
+        try:
+            code_txt = self.__makeCode()
+            self._writeFile(file, code_txt)
+            self.__printLog()
+            return True
+        except Exception as e:
+            print(e)
+            return False
+
+    def __makeCode(self):
+        code_txt = ""
+        pass
+        return code_txt
+
+    def __printLog(self):
+        pass
