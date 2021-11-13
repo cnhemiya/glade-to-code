@@ -14,19 +14,24 @@ MAP_MOD_IDX = "mod"
 
 
 class CodeObject:
-    """[转代码基类]"""    
+    """
+    转代码基类
+    """    
     def __init__(self):
-        """[glade 文件内容]"""
+        """
+        glade 文件内容
+        """
         self.__gladeTxt = ""
 
     def _readFile(self, file):
-        """[读取 Glade 文件内容]
+        """
+        读取 Glade 文件内容
 
         Args:
-            file ([string]): [Glade 文件路径]
+            file (str): Glade 文件路径
 
         Raises:
-            Exception: [文件不存在，抛出输入的文件路径]
+            Exception: 文件不存在，抛出输入的文件路径
         """
         if not os.path.exists(file):
             raise Exception("文件不存在：%s" % file)
@@ -36,11 +41,12 @@ class CodeObject:
             f.close()
 
     def _writeFile(self, file, code_txt):
-        """[写入生成的代码]
+        """
+        写入生成的代码
 
         Args:
-            file ([string]): [代码文件路径]
-            code_txt ([string]): [生成的代码]
+            file (str): 代码文件路径
+            code_txt (str): 生成的代码
         """        
         f = open(file, "w", encoding="utf-8")
         f.write(code_txt)
