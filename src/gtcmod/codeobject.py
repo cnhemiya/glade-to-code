@@ -19,58 +19,45 @@ class CodeObject:
     """
     转代码基类
     """
-
     def __init__(self):
         """
         初始化 CodeObject 类
-        __gladeTxt: Glade 文件内容
         __parse: GladeParse 类
         """
-        self.__gladeTxt = ""
         self.__parse = gtcc.GladeParse()
 
-    def __readFile(self, file):
+    def read(self, file_path):
         """
         读取 Glade 文件内容
 
         Args:
-            file (str): Glade 文件路径
-
-        Raises:
-            Exception: 文件不存在，抛出输入的文件路径
+            file_path (str): Glade 文件路径
         """
-        if not os.path.exists(file):
-            raise Exception("文件不存在：%s" % file)
-        else:
-            f = open(file, "r", encoding="utf-8")
-            self.__gladeTxt = f.read()
-            f.close()
-
-    def __writeFile(self, file, code_txt):
-        """
-        写入生成的代码
-
-        Args:
-            file (str): 代码文件路径
-            code_txt (str): 生成的代码
-        """
-        f = open(file, "w", encoding="utf-8")
-        f.write(code_txt)
-        f.close()
-
-    def read(self, file):
         try:
-            self.__readFile(file)
-            self.__parse(self.__gladeTxt)
-            return True
+            if not os.path.exists(file_path):
+                print("文件不存在：%s" % file_path)
+                return False
+            else:
+                f = open(file_path, "r", encoding="utf-8")
+                txt = f.read()
+                f.close()
+                self.__parse(self.__readFile(file_path))
+                return True
         except Exception as e:
             print(e)
             return False
 
-    def wirte(self, file):
+    def wirte(self, file_path):
+        """
+        写入生成的代码
+
+        Args:
+            file_path (str): 代码文件路径
+        """
         try:
-            code_txt = self.__makeCode(file)
-            self.__writeFile(file, code_txt)
+            f = open(file_path, "w", encoding="utf-8")
+            f.write(self.__makeCode(file_path))
+            f.close()
             self.__printLog()
             return True
         except Exception as e:

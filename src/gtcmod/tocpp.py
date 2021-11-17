@@ -6,12 +6,11 @@ DATE:    2021-10-14 12:59
 """
 
 import gtcmod.codeobject as cdobj
-import gtcmod.core as cr
 
 MAP_GLADE_IDX = cdobj.MAP_GLADE_IDX
 MAP_CLASS_IDX = cdobj.MAP_CLASS_IDX
 MAP_MOD_IDX = cdobj.MAP_MOD_IDX
-GTC_FILE_HEADER = "// "+ cdobj.GTC_FILE_HEADER
+GTC_FILE_HEADER = "// " + cdobj.GTC_FILE_HEADER
 
 GLADE_MAP_GTK = [
     {MAP_GLADE_IDX: "GFileIcon", MAP_CLASS_IDX: "Gio::FileIcon",
