@@ -41,7 +41,7 @@ class CodeObject:
                 f = open(file_path, "r", encoding="utf-8")
                 txt = f.read()
                 f.close()
-                self.__parse(self.__readFile(file_path))
+                self.__parse(txt)
                 return True
         except Exception as e:
             print(e)
