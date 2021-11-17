@@ -11,6 +11,7 @@ import gtcmod.core as cr
 MAP_GLADE_IDX = cdobj.MAP_GLADE_IDX
 MAP_CLASS_IDX = cdobj.MAP_CLASS_IDX
 MAP_MOD_IDX = cdobj.MAP_MOD_IDX
+GTC_FILE_HEADER = "// "+ cdobj.GTC_FILE_HEADER
 
 GLADE_MAP_GTK = [
     {MAP_GLADE_IDX: "GFileIcon", MAP_CLASS_IDX: "Gio::FileIcon",
@@ -255,31 +256,4 @@ GLADE_MAP_GTK = [
 class ToCpp(cdobj.CodeObject):
     def __init__(self):
         super().__init__()
-        self.__parse = cr.GladeParse()
 
-    def read(self, file):
-        try:
-            self._readFile(file)
-            self._parse()
-            return True
-        except Exception as e:
-            print(e)
-            return False
-
-    def wirte(self, file):
-        try:
-            code_txt = self.__makeCode()
-            self._writeFile(file, code_txt)
-            self.__printLog()
-            return True
-        except Exception as e:
-            print(e)
-            return False
-
-    def __makeCode(self):
-        code_txt = ""
-        pass
-        return code_txt
-
-    def __printLog(self):
-        pass
