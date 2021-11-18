@@ -5,12 +5,14 @@ AUTHOR:  cnhemiya@qq.com
 DATE:    2021-10-14 12:59
 """
 
+import os
+import gtcmod.core as gtcc
 import gtcmod.codeobject as cdobj
 
 MAP_GLADE_IDX = cdobj.MAP_GLADE_IDX
 MAP_CLASS_IDX = cdobj.MAP_CLASS_IDX
 MAP_MOD_IDX = cdobj.MAP_MOD_IDX
-GTC_FILE_HEADER = "// " + cdobj.GTC_FILE_HEADER
+GTC_FILE_HEADER = "// " + cdobj.GTC_FILE_HEADER + "\n"
 
 GLADE_MAP_GTK = [
     {MAP_GLADE_IDX: "GFileIcon", MAP_CLASS_IDX: "Gio::FileIcon",
@@ -256,3 +258,50 @@ class ToCpp(cdobj.CodeObject):
     def __init__(self):
         super().__init__()
 
+    def _srcFileBegin(self, file_name):
+        """
+        生成代码，文件开始
+        """
+        basename = os.path.basename(file_name)
+        name = basename.split(".glade")[0].upper()
+        code = GTC_FILE_HEADER + "\n"
+        code += "#ifndef _" + name + "_H_\n"
+        code += "#define _" + name + "_H_\n"
+        code += "\n"
+        return code
+
+    def _srcModule(self):
+        """
+        生成代码，模块
+        """
+        return self._modListCode("#include ", GLADE_MAP_GTK)
+
+    def _srcGladeString(self):
+        """
+        生成代码，Glade 文件内容
+        """
+        raise Exception(self.__funcNotAchieved("_srcGladeString"))
+
+    def _srcCodeBegin(self):
+        """
+        生成代码，代码开始
+        """
+        raise Exception(self.__funcNotAchieved("_srcCodeBegin"))
+
+    def _srcCodeMain(self):
+        """
+        生成代码，主代码
+        """
+        raise Exception(self.__funcNotAchieved("_srcCodeMain"))
+
+    def _srcCodeEnd(self):
+        """
+        生成代码，代码结束
+        """
+        raise Exception(self.__funcNotAchieved("_srcCodeEnd"))
+
+    def _srcFileEnd(self, file_name):
+        """
+        生成代码，文件结束
+        """
+        raise Exception(self.__funcNotAchieved("_srcFileEnd"))
