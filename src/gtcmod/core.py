@@ -7,17 +7,17 @@ DATE:    2021-10-07 12:58
 
 import xml.etree.ElementTree as etree
 
-NODE_TAG = "object"
-ATTRIB_CLASS = "class"
-ATTRIB_ID = "id"
+XML_NODE_TAG = "object"
+XML_ATTRIB_CLASS = "class"
+XML_ATTRIB_ID = "id"
 
-def replaceStringByDict(string_, strDict):
+def replaceStringByDict(string_, str_dict):
     """
     根据 strDict 提供的字符串字典替换 string_ 文本，
     strDict={ "str_old1":"str_new1", "str_old2":"str_new2"}
     """
-    for key in strDict:
-        string_ = string_.replace(key, strDict[key])
+    for key in str_dict:
+        string_ = string_.replace(key, str_dict[key])
     return string_
 
 
@@ -41,15 +41,15 @@ class GladeParse:
 
     def __parseNodeAttrib(self, file_path):
         tree = etree.ElementTree(file=file_path)
-        for node in tree.iter(tag = NODE_TAG):
-            node_attrib = {ATTRIB_CLASS: "", ATTRIB_ID: ""}
-            node_attrib[ATTRIB_CLASS] = node.attrib[ATTRIB_CLASS]
-            if ATTRIB_ID in node.attrib:
-                node_attrib[ATTRIB_ID] = node.attrib[ATTRIB_ID]
+        for node in tree.iter(tag = XML_NODE_TAG):
+            node_attrib = {XML_ATTRIB_CLASS: "", XML_ATTRIB_ID: ""}
+            node_attrib[XML_ATTRIB_CLASS] = node.attrib[XML_ATTRIB_CLASS]
+            if XML_ATTRIB_ID in node.attrib:
+                node_attrib[XML_ATTRIB_ID] = node.attrib[XML_ATTRIB_ID]
                 self.__classAndId.append(node_attrib)
             else:
-                node_attrib[ATTRIB_ID] = ""
-                self.__classNoId = node.attrib[ATTRIB_CLASS]
+                node_attrib[XML_ATTRIB_ID] = ""
+                self.__classNoId = node.attrib[XML_ATTRIB_CLASS]
             self.__nodeAttrib.append(node_attrib)
 
     @property

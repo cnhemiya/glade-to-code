@@ -26,8 +26,9 @@ class CodeObject:
         __parse: GladeParse 类
         """
         self.__gladeTxt = ""
+        self.__gladeBaseName = ""
         self.__gladeParse = gtcc.GladeParse()
-        
+
     def read(self, file_path):
         """
         读取 Glade 文件内容
@@ -44,6 +45,8 @@ class CodeObject:
                 self.__gladeTxt = f.read()
                 f.close()
                 self.__gladeParse.parse(file_path)
+                basename = os.path.basename(file_path)
+                self.__gladeBaseName = basename.split(".glade")[0]
                 return True
         except Exception as e:
             print(e)
@@ -58,7 +61,7 @@ class CodeObject:
         """
         try:
             f = open(file_path, "w", encoding="utf-8")
-            #f.write(self.__makeCode(file_path))
+            # f.write(self.__makeCode(file_path))
             f.close()
             self.__printLog()
             return True
@@ -76,13 +79,13 @@ class CodeObject:
         Returns:
             str: 生成的代码
         """
-        code_txt = self._srcFileBegin(file_name)
+        code_txt = self._srcFileBegin()
         code_txt += self._srcModule()
         # code_txt += self._srcGladeString()
-        # code_txt += self._srcCodeBegin()
-        # code_txt += self._srcCodeMain()
-        # code_txt += self._srcCodeEnd()
-        # code_txt += self._srcFileEnd(file_name)
+        code_txt += self._srcCodeBegin()
+        code_txt += self._srcCodeMain()
+        code_txt += self._srcCodeEnd()
+        code_txt += self._srcFileEnd()
         return code_txt
 
     def __printLog(self):
@@ -96,13 +99,20 @@ class CodeObject:
         return self.__gladeTxt
 
     @property
+    def _gladeBaseName(self):
+        """
+        获取 Glade 文件名
+        """
+        return self.__gladeBaseName
+
+    @property
     def _gladeParse(self):
         """
         获取 GladeParse 类
         """
         return self.__gladeParse
 
-    def __gladeMapGtk(self, glade, map_list):
+    def _gladeMapGtk(self, glade, map_list):
         """
         生成代码，Glade 文件中的 Gtk 对象
         """
@@ -122,11 +132,13 @@ class CodeObject:
         code = ""
         mod_list = []
         for i in self._gladeParse.classAndId:
-            glade_map = self.__gladeMapGtk(i[gtcc.ATTRIB_CLASS], glade_map_gtk)
+            glade_map = self._gladeMapGtk(
+                i[gtcc.XML_ATTRIB_CLASS], glade_map_gtk)
             if glade_map[2] not in mod_list:
                 mod_list.append(glade_map[2])
         for i in mod_list:
             code += key_word + i + "\n"
+        code += "\n"
         return code
 
     def __funcNotAchieved(self, func_name):
@@ -135,7 +147,7 @@ class CodeObject:
         """
         return "子类函数没有实现: " + self.__class__.__name__ + "." + func_name
 
-    def _srcFileBegin(self, file_name):
+    def _srcFileBegin(self):
         """
         生成代码，文件开始
         """
@@ -171,7 +183,7 @@ class CodeObject:
         """
         raise Exception(self.__funcNotAchieved("_srcCodeEnd"))
 
-    def _srcFileEnd(self, file_name):
+    def _srcFileEnd(self):
         """
         生成代码，文件结束
         """

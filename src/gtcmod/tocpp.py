@@ -258,12 +258,11 @@ class ToCpp(cdobj.CodeObject):
     def __init__(self):
         super().__init__()
 
-    def _srcFileBegin(self, file_name):
+    def _srcFileBegin(self):
         """
         生成代码，文件开始
         """
-        basename = os.path.basename(file_name)
-        name = basename.split(".glade")[0].upper()
+        name = self._gladeBaseName.upper()
         code = GTC_FILE_HEADER + "\n"
         code += "#ifndef _" + name + "_H_\n"
         code += "#define _" + name + "_H_\n"
@@ -274,34 +273,78 @@ class ToCpp(cdobj.CodeObject):
         """
         生成代码，模块
         """
-        return self._modListCode("#include ", GLADE_MAP_GTK)
+        code = "#include <gtkmm/builder.h>\n"
+        code += self._modListCode("#include ", GLADE_MAP_GTK)
+        return code
 
     def _srcGladeString(self):
         """
         生成代码，Glade 文件内容
         """
-        raise Exception(self.__funcNotAchieved("_srcGladeString"))
+        old_new = {"\'": "\\\'", "\"": "\\\""}
+        code = self._gladeBaseName + "_glade_string = \""
+        code += gtcc.replaceStringByDict(self._gladeTxt, old_new)
+        code += "\";"
+        return code
 
     def _srcCodeBegin(self):
         """
         生成代码，代码开始
         """
-        raise Exception(self.__funcNotAchieved("_srcCodeBegin"))
+        code = "class " + self._gladeBaseName + "\n{\n"
+        code += "public:\n"
+        return code
 
     def _srcCodeMain(self):
         """
         生成代码，主代码
         """
-        raise Exception(self.__funcNotAchieved("_srcCodeMain"))
+        space = "    "
+        code = space + self._gladeBaseName + "()\n"
+        code += space + "{\n"
+        code += self.__builderCode()
+        code += space + "}\n\n"
+        code += self.__objectList()
+        return code
+
+    def __builderCode(self):
+        """
+        生成代码，builder
+        """
+        space = "        "
+        code = space + "builder = Gtk::Builder::create_from_string(" \
+            + self._gladeBaseName + "_glade_string);\n"
+        for i in self._gladeParse.classAndId:
+            glade_map = self._gladeMapGtk(
+                i[gtcc.XML_ATTRIB_CLASS], GLADE_MAP_GTK)
+            id = i[gtcc.XML_ATTRIB_ID]
+            code += space + "builder->get_widget<" + glade_map[1] \
+                + ">(\"" + id + "\", " + id + ");\n"
+        return code
+
+    def __objectList(self):
+        """
+        生成代码，对象列表
+        """
+        space = "    "
+        code = space + "Glib::RefPtr<Gtk::Builder> builder;\n"
+        for i in self._gladeParse.classAndId:
+            glade_map = self._gladeMapGtk(
+                i[gtcc.XML_ATTRIB_CLASS], GLADE_MAP_GTK)
+            code += space + glade_map[1] + " *" + \
+                i[gtcc.XML_ATTRIB_ID] + ";\n"
+        return code
 
     def _srcCodeEnd(self):
         """
         生成代码，代码结束
         """
-        raise Exception(self.__funcNotAchieved("_srcCodeEnd"))
+        code = "};\n\n"
+        return code
 
-    def _srcFileEnd(self, file_name):
+    def _srcFileEnd(self):
         """
         生成代码，文件结束
         """
-        raise Exception(self.__funcNotAchieved("_srcFileEnd"))
+        code = "#endif"
+        return code
