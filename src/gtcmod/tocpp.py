@@ -293,7 +293,7 @@ class ToCpp(gtccb.CodeObject):
         """
         生成代码，模块
         """
-        code = "#include <cassert>\n"
+        code = "#include <assert.h>\n"
         code += "#include <glibmm/ustring.h>\n"
         code += "#include <gtkmm/builder.h>\n"
         code += self._modListCode("#include ", GLADE_MAP_GTK)
@@ -306,7 +306,9 @@ class ToCpp(gtccb.CodeObject):
         old_new = {"\'": "\\\'", "\"": "\\\""}
         code = "const Glib::ustring "
         code += self._gladeBaseName + "_glade_string = \""
-        code += gtcc.replaceStringByDict(self._gladeTxt, old_new)
+        lines = gtcc.replaceStringByDict(self._gladeTxt, old_new)
+        for i in lines.split("\n"):
+            code += i + "\\\n"
         code += "\";\n\n"
         return code
 
@@ -354,7 +356,7 @@ class ToCpp(gtccb.CodeObject):
         code = ""
         for i in self._gladeParse.classAndId:
             code += space + \
-                "std::assert(" + i[gtcc.XML_ATTRIB_ID] + " != nullptr);\n"
+                "assert(" + i[gtcc.XML_ATTRIB_ID] + " != nullptr);\n"
         return code
 
     def __objecCode(self):
