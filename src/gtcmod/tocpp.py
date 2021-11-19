@@ -7,12 +7,12 @@ DATE:    2021-10-14 12:59
 
 import os
 import gtcmod.core as gtcc
-import gtcmod.codeobject as cdobj
+import gtcmod.codeobject as gtccb
 
-MAP_GLADE_IDX = cdobj.MAP_GLADE_IDX
-MAP_CLASS_IDX = cdobj.MAP_CLASS_IDX
-MAP_MOD_IDX = cdobj.MAP_MOD_IDX
-GTC_FILE_HEADER = "// " + cdobj.GTC_FILE_HEADER + "\n"
+MAP_GLADE_IDX = gtccb.MAP_GLADE_IDX
+MAP_CLASS_IDX = gtccb.MAP_CLASS_IDX
+MAP_MOD_IDX = gtccb.MAP_MOD_IDX
+GTC_FILE_HEADER = "// " + gtccb.GTC_FILE_HEADER + "\n"
 
 GLADE_MAP_GTK = [
     {MAP_GLADE_IDX: "GFileIcon", MAP_CLASS_IDX: "Gio::FileIcon",
@@ -254,9 +254,29 @@ GLADE_MAP_GTK = [
 ]
 
 
-class ToCpp(cdobj.CodeObject):
+class ToCpp(gtccb.CodeObject):
+    """
+    转 C++ 代码
+    """
+
     def __init__(self):
         super().__init__()
+
+    def makeCode(self):
+        """
+        生成代码，公有权限方便调试
+
+        Returns:
+            str: 生成的代码
+        """
+        code = self._srcFileBegin()
+        code += self._srcModule()
+        code += self._srcGladeString()
+        code += self._srcCodeBegin()
+        code += self._srcCodeMain()
+        code += self._srcCodeEnd()
+        code += self._srcFileEnd()
+        return code
 
     def _srcFileBegin(self):
         """
@@ -273,7 +293,9 @@ class ToCpp(cdobj.CodeObject):
         """
         生成代码，模块
         """
-        code = "#include <gtkmm/builder.h>\n"
+        code = "#include <cassert>\n"
+        code += "#include <glibmm/ustring.h>\n"
+        code += "#include <gtkmm/builder.h>\n"
         code += self._modListCode("#include ", GLADE_MAP_GTK)
         return code
 
@@ -282,9 +304,10 @@ class ToCpp(cdobj.CodeObject):
         生成代码，Glade 文件内容
         """
         old_new = {"\'": "\\\'", "\"": "\\\""}
-        code = self._gladeBaseName + "_glade_string = \""
+        code = "const Glib::ustring "
+        code += self._gladeBaseName + "_glade_string = \""
         code += gtcc.replaceStringByDict(self._gladeTxt, old_new)
-        code += "\";"
+        code += "\";\n\n"
         return code
 
     def _srcCodeBegin(self):
@@ -302,9 +325,10 @@ class ToCpp(cdobj.CodeObject):
         space = "    "
         code = space + self._gladeBaseName + "()\n"
         code += space + "{\n"
-        code += self.__builderCode()
+        code += self.__builderCode() + "\n"
+        code += self.__assertCode()
         code += space + "}\n\n"
-        code += self.__objectList()
+        code += self.__objecCode()
         return code
 
     def __builderCode(self):
@@ -322,7 +346,18 @@ class ToCpp(cdobj.CodeObject):
                 + ">(\"" + id + "\", " + id + ");\n"
         return code
 
-    def __objectList(self):
+    def __assertCode(self):
+        """
+        生成代码，断言
+        """
+        space = "        "
+        code = ""
+        for i in self._gladeParse.classAndId:
+            code += space + \
+                "std::assert(" + i[gtcc.XML_ATTRIB_ID] + " != nullptr);\n"
+        return code
+
+    def __objecCode(self):
         """
         生成代码，对象列表
         """

@@ -49,7 +49,7 @@ class GladeParse:
                 self.__classAndId.append(node_attrib)
             else:
                 node_attrib[XML_ATTRIB_ID] = ""
-                self.__classNoId = node.attrib[XML_ATTRIB_CLASS]
+                self.__classNoId.append(node.attrib[XML_ATTRIB_CLASS])
             self.__nodeAttrib.append(node_attrib)
 
     @property

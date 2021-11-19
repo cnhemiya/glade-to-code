@@ -52,7 +52,7 @@ class CodeObject:
             print(e)
             return False
 
-    def wirte(self, file_path):
+    def write(self, file_path):
         """
         写入生成的代码
 
@@ -61,7 +61,7 @@ class CodeObject:
         """
         try:
             f = open(file_path, "w", encoding="utf-8")
-            # f.write(self.__makeCode(file_path))
+            f.write(self.makeCode())
             f.close()
             self.__printLog()
             return True
@@ -69,27 +69,19 @@ class CodeObject:
             print(e)
             return False
 
-    def makeCode(self, file_name):
+    def makeCode(self):
         """
-        生成代码
-
-        Args:
-            file_name (str): 文件名
+        生成代码，公有权限方便调试
 
         Returns:
             str: 生成的代码
         """
-        code_txt = self._srcFileBegin()
-        code_txt += self._srcModule()
-        # code_txt += self._srcGladeString()
-        code_txt += self._srcCodeBegin()
-        code_txt += self._srcCodeMain()
-        code_txt += self._srcCodeEnd()
-        code_txt += self._srcFileEnd()
-        return code_txt
+        raise Exception(self.__funcNotAchieved("makeCode"))
 
     def __printLog(self):
-        print("__printLog no!!!")
+        print("无 ID class 列表")
+        for i in self._gladeParse.classNoId:
+            print(i)
 
     @property
     def _gladeTxt(self):
@@ -146,45 +138,3 @@ class CodeObject:
         子类函数没有实现，加上子类名称和函数名称
         """
         return "子类函数没有实现: " + self.__class__.__name__ + "." + func_name
-
-    def _srcFileBegin(self):
-        """
-        生成代码，文件开始
-        """
-        raise Exception(self.__funcNotAchieved("_srcFileBegin"))
-
-    def _srcModule(self):
-        """
-        生成代码，模块
-        """
-        raise Exception(self.__funcNotAchieved("_srcModule"))
-
-    def _srcGladeString(self):
-        """
-        生成代码，Glade 文件内容
-        """
-        raise Exception(self.__funcNotAchieved("_srcGladeString"))
-
-    def _srcCodeBegin(self):
-        """
-        生成代码，代码开始
-        """
-        raise Exception(self.__funcNotAchieved("_srcCodeBegin"))
-
-    def _srcCodeMain(self):
-        """
-        生成代码，主代码
-        """
-        raise Exception(self.__funcNotAchieved("_srcCodeMain"))
-
-    def _srcCodeEnd(self):
-        """
-        生成代码，代码结束
-        """
-        raise Exception(self.__funcNotAchieved("_srcCodeEnd"))
-
-    def _srcFileEnd(self):
-        """
-        生成代码，文件结束
-        """
-        raise Exception(self.__funcNotAchieved("_srcFileEnd"))
