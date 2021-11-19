@@ -305,7 +305,7 @@ class ToCpp(gtccb.CodeObject):
         """
         old_new = {"\'": "\\\'", "\"": "\\\""}
         code = "const Glib::ustring "
-        code += self._gladeBaseName + "_glade_string = \""
+        code += self._gladeBaseName + "_glade_string = \"\\\n"
         lines = gtcc.replaceStringByDict(self._gladeTxt, old_new)
         for i in lines.split("\n"):
             code += i + "\\\n"
