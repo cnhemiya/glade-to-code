@@ -83,6 +83,12 @@ class CodeObject:
         for i in self._gladeParse.classNoId:
             print(i)
 
+    def __funcNotAchieved(self, func_name):
+        """
+        子类函数没有实现，加上子类名称和函数名称
+        """
+        return "子类函数没有实现: " + self.__class__.__name__ + "." + func_name
+
     @property
     def _gladeTxt(self):
         """
@@ -132,9 +138,3 @@ class CodeObject:
             code += key_word + i + "\n"
         code += "\n"
         return code
-
-    def __funcNotAchieved(self, func_name):
-        """
-        子类函数没有实现，加上子类名称和函数名称
-        """
-        return "子类函数没有实现: " + self.__class__.__name__ + "." + func_name
