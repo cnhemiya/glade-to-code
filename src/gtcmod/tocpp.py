@@ -269,16 +269,16 @@ class ToCpp(gtccb.CodeObject):
         Returns:
             str: 生成的代码
         """
-        code = self._srcFileBegin()
-        code += self._srcModule()
-        code += self._srcGladeString()
-        code += self._srcCodeBegin()
-        code += self._srcCodeMain()
-        code += self._srcCodeEnd()
-        code += self._srcFileEnd()
+        code = self.__srcFileBegin()
+        code += self.__srcModule()
+        code += self.__srcGladeString()
+        code += self.__srcCodeBegin()
+        code += self.__srcCodeMain()
+        code += self.__srcCodeEnd()
+        code += self.__srcFileEnd()
         return code
 
-    def _srcFileBegin(self):
+    def __srcFileBegin(self):
         """
         生成代码，文件开始
         """
@@ -289,7 +289,7 @@ class ToCpp(gtccb.CodeObject):
         code += "\n"
         return code
 
-    def _srcModule(self):
+    def __srcModule(self):
         """
         生成代码，模块
         """
@@ -299,7 +299,7 @@ class ToCpp(gtccb.CodeObject):
         code += self._modListCode("#include ", GLADE_MAP_GTK)
         return code
 
-    def _srcGladeString(self):
+    def __srcGladeString(self):
         """
         生成代码，Glade 文件内容
         """
@@ -310,7 +310,7 @@ class ToCpp(gtccb.CodeObject):
         code += "\";\n\n"
         return code
 
-    def _srcCodeBegin(self):
+    def __srcCodeBegin(self):
         """
         生成代码，代码开始
         """
@@ -318,7 +318,7 @@ class ToCpp(gtccb.CodeObject):
         code += "public:\n"
         return code
 
-    def _srcCodeMain(self):
+    def __srcCodeMain(self):
         """
         生成代码，主代码
         """
@@ -370,14 +370,14 @@ class ToCpp(gtccb.CodeObject):
                 i[gtcc.XML_ATTRIB_ID] + ";\n"
         return code
 
-    def _srcCodeEnd(self):
+    def __srcCodeEnd(self):
         """
         生成代码，代码结束
         """
         code = "};\n\n"
         return code
 
-    def _srcFileEnd(self):
+    def __srcFileEnd(self):
         """
         生成代码，文件结束
         """
