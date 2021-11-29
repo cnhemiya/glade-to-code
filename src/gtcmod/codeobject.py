@@ -79,6 +79,7 @@ class CodeObject:
         raise Exception(self.__funcNotAchieved("makeCode"))
 
     def __printLog(self):
+        print("\n日志：")
         print("无 ID class 列表")
         for i in self._gladeParse.classNoId:
             print(i)
