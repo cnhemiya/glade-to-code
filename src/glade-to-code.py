@@ -43,7 +43,7 @@ def toCode(lang, in_file, out_file):
     """
     try:
         to_code = None
-        lang = lang.toLowerCase()
+        lang = lang.lower()
         if lang == "c++":
             to_code = gtcmod.tocpp.ToCpp()
         if to_code is not None:

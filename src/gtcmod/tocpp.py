@@ -316,7 +316,7 @@ class ToCpp(gtccb.CodeObject):
         """
         生成代码，代码开始
         """
-        code = "class " + self._gladeBaseName + "\n{\n"
+        code = "class " + self._gladeBaseName + " : public Gtk::Container\n{\n"
         code += "public:\n"
         return code
 
